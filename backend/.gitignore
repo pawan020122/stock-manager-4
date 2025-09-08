@@ -1,0 +1,56 @@
+# ----------------------------
+# Node.js + Express backend
+# ----------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+
+# Build outputs
+dist/
+build/
+
+# ----------------------------
+# React frontend
+# ----------------------------
+# Dependencies
+frontend/node_modules/
+
+# Production build
+frontend/build/
+frontend/dist/
+
+# Local config
+frontend/.env
+frontend/.env.local
+
+# ----------------------------
+# OS + IDE files
+# ----------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ----------------------------
+# Misc
+# ----------------------------
+*.tgz
+*.tar.gz
