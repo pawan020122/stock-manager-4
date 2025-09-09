@@ -18,7 +18,13 @@ connectDB();
 const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://stock-manager-4-khaki.vercel.app",
+    "http://localhost:5173"
+  ],
+  credentials: true, // if you’re using cookies or auth headers
+}));
 
 app.get("/", (req, res)=>{
     res.send("API is running...");
