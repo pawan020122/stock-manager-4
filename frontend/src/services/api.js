@@ -1,11 +1,15 @@
+// frontend/src/services/api.js
 import axios from "axios";
 
-const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+const api = axios.create({
+  baseURL: "https://stock-manager-4.onrender.com/api", // deployed backend link
+  withCredentials: true, // only if you are using cookies/session
 });
 
+
+
 // Attach token to every request if available
-API.interceptors.request.use((config) => {
+api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -14,10 +18,10 @@ API.interceptors.request.use((config) => {
 });
 
 // 🟢 Stocks API
-export const getProducts = () => API.get("/products");
-export const createProduct = (data) => API.post("/products/create", data);
-export const deleteProduct = (id) => API.delete(`/products/${id}`);
-export const updateProduct = (id, data) => API.put(`/products/${id}`, data);
-export const getTotalSales = () => API.get("/sales/total");
+export const getProducts = () => api.get("/products");
+export const createProduct = (data) => api.post("/products/create", data);
+export const deleteProduct = (id) => api.delete(`/products/${id}`);
+export const updateProduct = (id, data) => api.put(`/products/${id}`, data);
+export const getTotalSales = () => api.get("/sales/total");
 
-export default API;
+export default api;
