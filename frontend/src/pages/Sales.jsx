@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { toast } from "react-toastify";
 
 function Sales() {
   const [sales, setSales] = useState([]);
@@ -17,8 +18,10 @@ function Sales() {
       // 👇 Calculate total from sales list
       const total = res.data.reduce((sum, s) => sum + (s.total || 0), 0);
       setTotalAmount(total);
+
+
     } catch {
-      alert("Failed to fetch sales");
+      toast.error("Failed to fetch sales");
     }
   };
 
@@ -28,8 +31,9 @@ function Sales() {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setProducts(res.data);
+      
     } catch {
-      alert("Failed to fetch products");
+      toast.error("Failed to fetch products");
     }
   };
 
@@ -50,9 +54,10 @@ function Sales() {
 
       setForm({ productId: "", quantity: "" });
       fetchSales();
+            toast.success("Sales data loaded ✅");
     } catch (err) {
       console.error("Error response:", err.response?.data);
-      alert(err.response?.data?.message || "Error recording sale");
+      toast.error(err.response?.data?.message || "Error recording sale");
     }
   };
 

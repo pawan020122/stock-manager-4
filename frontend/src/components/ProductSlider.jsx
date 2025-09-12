@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import {getProducts, deleteProduct, updateProduct} from "../services/api";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -24,7 +25,7 @@ const ProductSlider = () => {
 const handleDelete = async (id) => {
   try {
     await deleteProduct(id);
-    alert("Product deleted!");
+    toast.error("Product deleted!");
     setStocks(stocks.filter((s) => s._id !== id)); // update UI
   } catch (err) {
     console.error("Error deleting stock:", err.response?.data || err.message);

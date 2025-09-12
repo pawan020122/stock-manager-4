@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProducts, updateProduct, createProduct } from "../services/api";
+import { toast } from "react-toastify";
 
 const EditProduct = () => {
   const { id } = useParams(); // get product id from URL
@@ -44,10 +45,10 @@ const EditProduct = () => {
     e.preventDefault();
     try {
       await updateProduct(id, form);
-      alert("Product updated successfully!");
+      toast.success("Product updated successfully!");
       navigate("/"); // redirect back
     } catch (err) {
-      console.error("Error updating product:", err.message);
+      toast.error("Error updating product:", err.message);
     }
   };
 

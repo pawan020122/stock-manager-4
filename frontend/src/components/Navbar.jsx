@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function Navbar() {
   onClick={() => {
     if (window.confirm("Are you sure you want to logout?")) {
       handleLogout();
-      alert("You have been logged out successfully!");
+      toast.success("You have been logged out successfully!");
     }
   }}
   className="bg-red-500 px-3 py-1 rounded hover:bg-red-600"

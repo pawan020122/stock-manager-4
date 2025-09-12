@@ -9,6 +9,8 @@ import Navbar from "./components/Navbar";
 import EditProduct from "./pages/EditProduct";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -47,6 +49,19 @@ function App() {
       </Routes>
       <div>
         <Footer />
+        {/* ✅ Toast container placed once globally */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       </div>
     </div>
     

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { toast } from "react-toastify";
 
 function Products() {
   const [searchType, setSearchType] = useState("");
@@ -12,8 +13,9 @@ function Products() {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setProducts(res.data);
+
     } catch (err) {
-      alert("Failed to fetch products");
+      toast.error("Failed to fetch products");
     }
   };
 
@@ -25,8 +27,10 @@ function Products() {
       });
       setForm({ name: "", quantity: "", price: "" });
       fetchProducts();
+       toast.success("🎉 Product added successfully!");
+
     } catch (err) {
-      alert(err.response?.data?.message || "Error adding product");
+      toast.error(err.response?.data?.message || "Error adding product");
     }
   };
 

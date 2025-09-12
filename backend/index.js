@@ -21,7 +21,8 @@ app.use(morgan('dev'));
 app.use(cors({
   origin: [
     "https://stock-manager-4-khaki.vercel.app",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "http://localhost:5175"
   ],
   credentials: true, // if you’re using cookies or auth headers
 }));
